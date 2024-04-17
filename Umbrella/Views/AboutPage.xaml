@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Umbrella.Views.AboutPage"
+             x:Name="About"
+             xmlns:local="clr-namespace:Umbrella"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             Title="{Binding Title}">
+
+    <Grid>
+        <ScrollView>
+            <StackLayout Background="White">
+                
+                    <!-- Весь текущий контент страницы -->
+                    
+                
+                <Grid>
+                    <Image Source="min.jpg" Scale="4"  Aspect="AspectFill"></Image>
+                    <Image Source="overlay.jpg" Scale="4"  Aspect="AspectFill" Opacity="0.5"></Image>
+                    
+                </Grid>
+
+                <StackLayout>
+                    <Grid>
+                        <Label x:Name="Town" Text="Пермь" FontSize="48" FontAttributes="Bold" TextColor="Gray" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" Margin="6,6,0,0" VerticalOptions="Start"  VerticalTextAlignment="Start" TranslationY="-250"></Label>
+                        <Label x:Name="Town2" Text="Пермь" FontSize="48" FontAttributes="Bold" TextColor="White" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0" VerticalOptions="Start" VerticalTextAlignment="Start" TranslationY="-250"></Label>
+                        <Button Text="Инфо" CornerRadius="50" Clicked="OnInfoButtonClicked" FontSize="30" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" ScaleX="0.6" ScaleY="0.6" Margin="0,0,0,0" TranslationY="-40" TranslationX="5"/>
+                    </Grid>
+                    <Button Scale ="0.1" CornerRadius="50" ImageSource="left.png" Clicked="PreviousCityClicked"  TranslationX="-150" TranslationY="-340" Margin="0,0,0,-500"/>
+                    <Button Scale ="0.1" CornerRadius="50" ImageSource="right.png" Clicked="NextCityClicked"  TranslationX="150" TranslationY="-365" Margin="0,0,0,-500"/>
+
+                    <Grid>
+                        <Label x:Name="Temp" Text="+14°C" FontSize="40" TextColor="Gray" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" TranslationY="-280" Margin="6,6,0,0"></Label>
+                        <Label x:Name="Temp2" Text="+14°C" FontSize="40" TextColor="White" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" TranslationY="-280" Margin="0,0,0,0"></Label>
+                        
+                    </Grid>
+                    
+                    <Grid>
+                        
+                        
+                        <Image Source="wind3.jpg" Scale="0.15" TranslationY="-160" TranslationX="-95" Margin="-194,-194,-200,-200"></Image>
+                        <Image Source="wind.jpg" Scale="0.15" TranslationY="-160" TranslationX="-95" Margin="-200,-200,-200,-200"></Image>
+
+                        <!--<Label x:Name="Time" Text="14:45" FontSize="30" TextColor="Gray" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" TranslationY="-70" TranslationX="5" Margin="-196,-196,-200,-200"></Label>
+                        <Label x:Name="Time2" Text="14:45" FontSize="30" TextColor="White" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" TranslationY="-70" TranslationX="5" Margin="-200,-200,-200,-200"></Label>-->
+
+                       
+
+                        <Image Source="water3.jpg" Scale="0.15" TranslationY="-165" TranslationX="100" Margin="-194,-194,-200,-200"></Image>
+                        <Image Source="water.jpg" Scale="0.15" TranslationY="-165" TranslationX="100" Margin="-200,-200,-200,-200"></Image>
+
+
+                        <Label x:Name="Wind" Text="2 м/с" FontSize="30" TextColor="Gray" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" TranslationY="150" TranslationX="-109" Margin="-196,-196,-200,-200"></Label>
+                        <Label x:Name="Wind2" Text="2 м/с" FontSize="30" TextColor="White" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" TranslationY="150" TranslationX="-109" Margin="-200,-200,-200,-200"></Label>
+
+                        <Label x:Name="Humidity" Text="53%" FontSize="30" TextColor="Gray" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" TranslationY="152" TranslationX="105" Margin="-196,-196,-200,-200"></Label>
+                        <Label x:Name="Humidity2" Text="53%" FontSize="30" TextColor="White" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" TranslationY="152" TranslationX="105" Margin="-200,-200,-200,-200"></Label>
+                        
+                        <Button Text="Изменить город" FontFamily="Arkhip" CornerRadius="50" Clicked="OnChangeCityClicked" HorizontalOptions="CenterAndExpand" Scale="0.72" TranslationX="-100"/>
+                        <Button Text="В избранное!" FontSize="13" CornerRadius="50" FontFamily="Arkhip" Scale="0.8" Clicked="AddToFavoritesClicked" HorizontalOptions="CenterAndExpand" TranslationY="0" TranslationX="100"/>
+                       
+
+                    </Grid>
+                </StackLayout>
+
+                <RelativeLayout>
+                    <Frame RelativeLayout.YConstraint="0" Background="White" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0" Padding="0" VerticalOptions="Center">
+                        <StackLayout>
+                            <SearchBar x:Name="searchBar" Placeholder="Введите город" BackgroundColor="White" TextChanged="OnSearchTextChanged" IsEnabled="True" FontFamily="Arkhip" Margin="0,0,0,0"/>
+                            <ListView x:Name="listView" ItemTapped="OnItemTapped" >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+                                                <Label Text="{Binding NameRu}" FontFamily="Arkhip"  TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                </RelativeLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

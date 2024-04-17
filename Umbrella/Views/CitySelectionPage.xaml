@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Umbrella.Views.CitySelectionPage"
+             Title="Выбор города">
+
+    <RelativeLayout>
+        <Frame RelativeLayout.YConstraint="0" Background="White" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0" Padding="0" VerticalOptions="Center">
+            <StackLayout>
+                <SearchBar x:Name="searchBar" Placeholder="Введите город" BackgroundColor="White" TextChanged="OnSearchTextChanged" IsEnabled="True" FontFamily="Arkhip" Margin="0,0,0,0"/>
+                <ListView x:Name="listViewLocation" ItemTapped="OnItemTapped" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <Grid>
+                                        <Image Source="{Binding Image}" WidthRequest="600" HeightRequest="800" Margin="0,0,0,0" Aspect="AspectFill">
+                                          
+                                        </Image>
+                                        
+                                        <Label Text="{Binding Town}" TextColor="Gray" FontSize="14" VerticalOptions="End" HorizontalOptions="Center" FontFamily="Arkhip" Margin="6,6,0,10" Scale="1.7"/>
+                                        <Label Text="{Binding Town}" TextColor="White" FontSize="14" VerticalOptions="End" HorizontalOptions="Center" FontFamily="Arkhip" Margin="0,0,0,10" Scale="1.7"/>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Frame>
+    </RelativeLayout>
+
+</ContentPage>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Umbrella.Views.Rate">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="    Оцените приложение" FontSize="20" Margin="0,50,0,0" HorizontalOptions="CenterAndExpand"/>
+            <Slider x:Name="ratingSlider" Maximum="5" Value="{Binding FontSize, Mode=TwoWay}" BackgroundColor="Gray"/>
+            <Button Text="Оценить" CornerRadius="50" Clicked="OnSubmitButtonClicked" FontSize="30" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" ScaleX="0.6" ScaleY="0.6" Margin="0,0,0,50" TranslationY="0" TranslationX="5"/>
+            <Label Text="    Ваши предложения, замечания: " FontSize="20" HorizontalOptions="CenterAndExpand"/>
+            <Entry x:Name="remarksEntry" Placeholder="  Введите ваше сообщение" Margin="0,50,0,0"/>
+            <Button Text="Отправить" CornerRadius="50" Clicked="OnSendButtonClicked" FontSize="30" FontFamily="Arkhip" HorizontalOptions="CenterAndExpand" ScaleX="0.6" ScaleY="0.6" TranslationX="5"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

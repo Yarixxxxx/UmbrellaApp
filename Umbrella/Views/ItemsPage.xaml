@@ -1,0 +1,24 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Umbrella.Views.ItemsPage"
+             Title="Настройки">
+    <StackLayout>
+        <Label Text="    Температура" FontSize="20" Margin="0,50,0,0" HorizontalOptions="CenterAndExpand"/>
+        <StackLayout Orientation="Horizontal" Margin="10,10,0,50" HorizontalOptions="CenterAndExpand">
+            <RadioButton x:Name="celsiusRadioButton" GroupName="temperature" CheckedChanged="OnTemperatureUnitChanged" x:FieldModifier="public"/>
+            <Label Text="Цельсий" VerticalOptions="Center"/>
+            <RadioButton x:Name="fahrenheitRadioButton" GroupName="temperature" CheckedChanged="OnTemperatureUnitChanged" x:FieldModifier="public"/>
+            <Label Text="Фаренгейт" VerticalOptions="Center"/>
+        </StackLayout>
+
+        <Label Text="    Скорость ветра" FontSize="20" Margin="0,20,0,0" HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Horizontal" Margin="10,10,0,50" HorizontalOptions="CenterAndExpand">
+            <RadioButton x:Name="metersPerSecondRadioButton" GroupName="windSpeed" CheckedChanged="OnWindSpeedUnitChanged" x:FieldModifier="public"/>
+            <Label Text="Метры/с" VerticalOptions="Center"/>
+            <RadioButton x:Name="kilometersPerHourRadioButton" GroupName="windSpeed" CheckedChanged="OnWindSpeedUnitChanged" x:FieldModifier="public"/>
+            <Label Text="Миль/ч" VerticalOptions="Center"/>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>
+

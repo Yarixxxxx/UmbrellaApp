@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Umbrella.Views"
+             x:Class="Umbrella.Views.CityInfoPage">
+
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="{Binding Name}" FontSize="Title" HorizontalOptions="Center" FontFamily="Arkhip"/>
+            <Label Text="{Binding displayName}" FontSize="Subtitle" HorizontalOptions="Center" FontFamily="Arkhip"/>
+            <Label Text="{Binding addressIv4 , StringFormat='Геокод: {0}'}" FontSize="Subtitle" HorizontalOptions="Center" FontFamily="Arkhip"/>
+            <Label Text="{Binding addressCountryCode, StringFormat='Код страны: {0}'}" FontSize="Subtitle" HorizontalOptions="Center" FontFamily="Arkhip"/>
+            <Label Text="{Binding Population, StringFormat='Население: {0}'}" FontSize="Subtitle" HorizontalOptions="Center" FontFamily="Arkhip"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

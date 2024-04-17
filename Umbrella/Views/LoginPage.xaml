@@ -1,0 +1,14 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Umbrella.Views.LoginPage"
+             Title="Login"
+             Shell.FlyoutBehavior="Disabled"
+             Shell.NavBarIsVisible="False">
+    
+    <StackLayout Padding="20">
+        <Entry Placeholder="Логин" x:Name="usernameEntry" Margin="0,10,0,10"/>
+        <Entry Placeholder="Пароль" x:Name="passwordEntry" IsPassword="True" Margin="0,10,0,10"/>
+        <Button Text="Войти" Clicked="OnLoginButtonClicked"/>
+        <Button Text="Зарегистрироваться" Clicked="OnSignUpButtonClicked"/>
+    </StackLayout>
+</ContentPage>
