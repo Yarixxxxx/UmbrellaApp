@@ -6,8 +6,10 @@ namespace Umbrella.Views
 {
     public partial class ItemsPage : ContentPage
     {
-        public static bool IsTemperatureChanged { get; set; }
-        public static bool IsWindChanged { get; set; }
+        public static bool IsCelsius { get; set; }
+        public static bool IsMetres { get; set; }
+        public static bool IsFahrengeit { get; set; }
+        public static bool IsMiles { get; set; }
         SQLiteConnection database;
         public static RadioButton button = new RadioButton();
         public ItemsPage()
@@ -51,12 +53,13 @@ namespace Umbrella.Views
             // Обработка изменения выбора единиц температуры
             if (celsiusRadioButton.IsChecked)
             {
-                IsTemperatureChanged = false;
+                IsCelsius = true;
+                IsFahrengeit = false;
             }
             else if (fahrenheitRadioButton.IsChecked)
             {
-                button.IsChecked = fahrenheitRadioButton.IsChecked;
-                IsTemperatureChanged = true;
+                IsCelsius = false;
+                IsFahrengeit = true;
             }
         }
 
@@ -65,11 +68,13 @@ namespace Umbrella.Views
             // Обработка изменения выбора единиц скорости ветра
             if (metersPerSecondRadioButton.IsChecked)
             {
-                IsWindChanged = false;
+                IsMetres = true;
+                IsMiles = false;
             }
             else if (kilometersPerHourRadioButton.IsChecked)
             {
-                IsWindChanged = true;
+                IsMiles = true;
+                IsMetres = false;
             }
         }
     }

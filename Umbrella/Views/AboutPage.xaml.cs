@@ -323,45 +323,31 @@ namespace Umbrella.Views
             string windSpeedUnits = "metric";
 
             // Если только один параметр равен true, то другой будет metric
-            if (ItemsPage.IsTemperatureChanged)
-            {
-                temperatureUnits = "imperial";
-                TemperatureChanged = ItemsPage.IsTemperatureChanged;
-            }
-            else if (ItemsPage.IsWindChanged)
-            {
-                windSpeedUnits = "imperial";
-                WindChanged = ItemsPage.IsWindChanged;
-            }
+            
 
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
                     string url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units={temperatureUnits}";
-
                     string response = await client.GetStringAsync(url);
                     var json = JObject.Parse(response);
                     temp = json["main"]["temp"].ToString();
                     humidity = json["main"]["humidity"].ToString();
                     speed = json["wind"]["speed"].ToString();
 
-                    // Если только один параметр равен true, то загружаем данные для второго параметра с metric
-                    if (ItemsPage.IsWindChanged)
+                    if (ItemsPage.IsFahrengeit)
                     {
-                        windSpeedUnits = "imperial";
-                        WindChanged = ItemsPage.IsWindChanged;
-                        url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units={windSpeedUnits}";
-
+                        temperatureUnits = "imperial";
+                        url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units={temperatureUnits}";
                         response = await client.GetStringAsync(url);
                         json = JObject.Parse(response);
-                        speed = json["wind"]["speed"].ToString();
+                        temp = json["main"]["temp"].ToString();
                     }
-                    else
+                    if (ItemsPage.IsMiles)
                     {
-                        WindChanged = ItemsPage.IsWindChanged;
-                        windSpeedUnits = "metric";
-                        url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units={windSpeedUnits}";
+                        temperatureUnits = "imperial";
+                        url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units={temperatureUnits}";
                         response = await client.GetStringAsync(url);
                         json = JObject.Parse(response);
                         speed = json["wind"]["speed"].ToString();
@@ -397,28 +383,28 @@ namespace Umbrella.Views
 
             //string formattedTime = realTime.ToString("HH:mm");
 
-            Town.Text = russianName;
-            Town2.Text = russianName;
+            Town.Text = russianName.ToUpper().Substring(0,1) + russianName.Substring(1);
+            Town2.Text = russianName.ToUpper().Substring(0, 1) + russianName.Substring(1);
 
-            if (ItemsPage.button.IsChecked)
+            if (ItemsPage.IsFahrengeit)
             {
                 Temp.Text = temperature + " °F";
                 Temp2.Text = temperature + " °F";
             }
-            else
+            else if (ItemsPage.IsCelsius || !ItemsPage.IsFahrengeit)
             {
                 Temp.Text = temperature + " °C";
                 Temp2.Text = temperature + " °C";
             }
                  
-            if (WindChanged)
+            if (ItemsPage.IsMiles)
             {
                 Wind.Text = windSpeed + " миль/ч";
                 Wind2.Text = windSpeed + " миль/ч";
                 Wind.TranslationX = -80; 
                 Wind2.TranslationX = -80;
             }
-            else
+            else if (ItemsPage.IsMetres || !ItemsPage.IsMiles)
             {
                 Wind.Text = windSpeed + " м/с";     
                 Wind2.Text = windSpeed + " м/с";
